@@ -141,7 +141,7 @@ if st.button("Clasificar noticia"):
     else: 
         pass
     
-    temas = pd.DataFrame({"TEMA":["TEMA 1","TEMA 2", "TEMA 3"]})
+    temas = pd.DataFrame({"TEMA":["Internacional","Politica", "Deportes"]})
 
     if metodo == "LDA sin TF-IDF":
         ind_wo_nuevo = lda_model[bow_corpus_new]
@@ -150,7 +150,7 @@ if st.button("Clasificar noticia"):
         st.success(f"El tema de la noticia es: {resultado}")
 
     elif metodo == "LDA con TF-IDF":
-        temas = pd.DataFrame({"TEMA":["TEMA 3","TEMA 1", "TEMA 2"]})
+        temas = pd.DataFrame({"TEMA":["Deportes","Internacional", "Politica"]})
         ind_tfidf_nuevo = lda_tfidf_model[bow_corpus_new]
         topics_tfidf = topicos(ind_tfidf_nuevo, nuevos)
         resultado = temas["TEMA"][topics_tfidf[0]]
